@@ -1,0 +1,44 @@
+name: 'Cameron Robinson'
+phone: '07340 006306'
+email: 'camjr246@yahoo.co.uk'
+github: 'https://github.com/cameron-rx'
+
+education:
+  - school: 'University of Sheffield'
+    level: 'BSc'
+    subject: 
+      - sub_name: 'Computer Science'
+        grade: '2:2'
+  - school: 'Brunts Sixth Form'
+    level: 'A Level'
+    subject: 
+      - sub_name: 'Maths'
+        grade: 'A*'
+      - sub_name: 'Computer Science'
+        grade: 'A*'
+      - sub_name: 'Physics'
+        grade: 'A'
+
+work:
+  - job_title: 'Team Leaders'
+    employer: 'Revolution Sheffield'
+    time_period: 'Aug 2021 - Jan 2026'
+    bullets: 
+      - 'Lead team of ......'
+      - ''
+    skills:
+      - 'Teamwork'
+      - 'Leadership'
+# Job Title, Employer, Time Period, Bullets, Skills (soft skills for my employment)
+
+projects:
+# Name of Project, Link to Project, Bullets, Skills (technical and soft)
+  - name: 'StockSpeech'
+    link: 'https://stockspeech.crwebstudio.co.uk/'
+    bullets:
+      - 'Voice powered stock counting SvelteKit web app...'
+      - ''
+    skills: 
+      - 'SvelteKit'
+      - 'Deepgram STT'
+      - 'Cloudflare Workers'
