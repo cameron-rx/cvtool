@@ -7,16 +7,16 @@ education:
   - school: 'University of Sheffield'
     level: 'BSc'
     subject: 
-      - sub_name: 'Computer Science'
+      - name: 'Computer Science'
         grade: '2:2'
   - school: 'Brunts Sixth Form'
     level: 'A Level'
     subject: 
-      - sub_name: 'Maths'
+      - name: 'Maths'
         grade: 'A*'
-      - sub_name: 'Computer Science'
+      - name: 'Computer Science'
         grade: 'A*'
-      - sub_name: 'Physics'
+      - name: 'Physics'
         grade: 'A'
 
 work:
@@ -29,10 +29,8 @@ work:
     skills:
       - 'Teamwork'
       - 'Leadership'
-# Job Title, Employer, Time Period, Bullets, Skills (soft skills for my employment)
 
 projects:
-# Name of Project, Link to Project, Bullets, Skills (technical and soft)
   - name: 'StockSpeech'
     link: 'https://stockspeech.crwebstudio.co.uk/'
     bullets:
