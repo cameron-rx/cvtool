@@ -1,6 +1,6 @@
 name: 'Cameron Robinson'
-phone: '07340 006306'
-email: 'camjr246@yahoo.co.uk'
+phone: '07341 349091'
+email: 'example@email.com'
 github: 'https://github.com/cameron-rx'
 
 education:
@@ -20,7 +20,7 @@ education:
         grade: 'A'
 
 work:
-  - job_title: 'Team Leaders'
+  - job_title: 'Team Leader'
     employer: 'Revolution Sheffield'
     time_period: 'Aug 2021 - Jan 2026'
     bullets: 
