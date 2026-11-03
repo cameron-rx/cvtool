@@ -3,6 +3,8 @@ using YamlDotNet.Serialization.NamingConventions;
 using System.Text.Json;
 using OpenAI.Chat;
 using cvtool;
+using cvtool.dto;
+
 // See https://aka.ms/new-console-template for more information
 
 // user inputed job description -> send to open ai with profile -> request return of relevant profile sections -> build cv
@@ -39,12 +41,12 @@ void RequestRelevantExperience(Profile user, string job) {
 
 		Example response 
 		{
-			summary: 'Short description of reasoning of choices'
-			work: [
+			Summary: 'Short description of reasoning of choices'
+			Work: [
 			{ index: 0,
 			  bullets: [1,4,6]
 			],
-			projects: [
+			Projects: [
 			{ index: 0,
 			  bullets: [1]
 			},
@@ -62,7 +64,21 @@ void RequestRelevantExperience(Profile user, string job) {
 
 	ChatClient client = new(model: "gpt-5.1", apiKey: Environment.GetEnvironmentVariable("OPENAI_API_KEY"));
 	ChatCompletion completion = client.CompleteChat(request);
-	Console.WriteLine($"OPENAI RESPONSE: {completion.Content[0].Text}");
+
+	OpenAIDTO? jsonResponse = JsonSerializer.Deserialize<OpenAIDTO>(completion.Content[0].Text);
+
+	if (jsonResponse != null)
+	{
+		Console.WriteLine($"Summary:  {jsonResponse.Summary} \n");
+		foreach (var work in jsonResponse.Work) {
+			Console.WriteLine($"Job: {user.Work[work.Index].JobTitle}, {user.Work[work.Index].Employer}");
+		}
+
+		foreach (var project in jsonResponse.Projects) {
+			Console.WriteLine($"Project: {user.Projects[project.Index].Name}");
+		}
+	}
+
 }
 
 
