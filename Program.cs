@@ -1,6 +1,4 @@
-﻿using System.Text.Json;
-using OpenAI.Chat;
-using cvtool;
+﻿using cvtool;
 using cvtool.DTO;
 using cvtool.User;
 
@@ -15,58 +13,9 @@ using cvtool.User;
 // 	},  
 // ]
 
-// Serialise user education, work experience and projects to send to open ai
-
-void RequestRelevantExperience(Profile user, string job) {
-	string jsonEducation = JsonSerializer.Serialize(user.Education);
-	string jsonWork = JsonSerializer.Serialize(user.Work);
-	string jsonProjects = JsonSerializer.Serialize(user.Projects);
-
-	string request = @"
-		You are a cv tailouring agent who is responsbile for selecting the users most relevant experience for a job role
-		to place in their tailoured cv. You will be provied information on the users work experience and personal projects. For each category return the index of the relevant section and the index of the bullet points to include.
-
-		Example response 
-		{
-			Summary: 'Short description of reasoning of choices'
-			Work: [
-			{ Index: 0,
-			  Bullets: [1,4,6]
-			],
-			Projects: [
-			{ Index: 0,
-			  Bullets: [1]
-			},
-			{ Index: 0,
-			  Bullets: [3,4]
-			}]
-		}
-		
-		User Data:
-	";
-	
-	request = request + jsonWork.ToString();
-	request = request + jsonProjects.ToString();
-	request = request + $"Job: {job}";
-
-	ChatClient client = new(model: "gpt-5.1", apiKey: Environment.GetEnvironmentVariable("OPENAI_API_KEY"));
-	ChatCompletion completion = client.CompleteChat(request);
-
-
-	OpenAIDTO? jsonResponse = JsonSerializer.Deserialize<OpenAIDTO>(completion.Content[0].Text);
-
-
-	if (jsonResponse != null)
-	{
-		Console.WriteLine(jsonResponse.ToString());
-	}
-
-}
-
-
-Profile user = Profile.ReadConfig("data/profile.yaml");
 string job = "Bar Manager at local pub";
-RequestRelevantExperience(user, job);
+Profile user = Profile.ReadConfig("data/profile.yaml");
+user.ChooseSections(job);
 
 
 

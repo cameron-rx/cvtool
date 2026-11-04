@@ -1,4 +1,6 @@
 namespace cvtool.User;
+using cvtool.DTO;
+using cvtool.AI;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
 
@@ -27,6 +29,12 @@ public class Profile
 		return profile;
 	}
 
+	public string ChooseSections(string jobDescription)
+	{
+		OpenAIDTO result = OpenAIProvider.GetRelevantSections(jobDescription, this.Work, this.Projects);
+		return result.ToString();
+	
+	}
 }
 
 public class Qualifications
