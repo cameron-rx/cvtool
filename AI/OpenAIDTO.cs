@@ -1,4 +1,4 @@
-namespace cvtool.DTO;
+namespace cvtool.AI;
 
 public class OpenAIDTO {
 	public string? Summary { get; set; }

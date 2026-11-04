@@ -1,5 +1,4 @@
 namespace cvtool.User;
-using cvtool.DTO;
 using cvtool.AI;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;

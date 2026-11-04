@@ -1,6 +1,5 @@
 namespace cvtool.AI;
 using OpenAI.Chat;
-using cvtool.DTO;
 using System.Text.Json;
 using cvtool.User;
 
