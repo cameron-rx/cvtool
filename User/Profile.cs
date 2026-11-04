@@ -28,11 +28,40 @@ public class Profile
 		return profile;
 	}
 
-	public string ChooseSections(string jobDescription)
+	public void ChooseSections(string jobDescription)
 	{
 		OpenAIDTO result = OpenAIProvider.GetRelevantSections(jobDescription, this.Work, this.Projects);
-		return result.ToString();
-	
+		Console.WriteLine($"Summary:\n{result.Summary}\n");
+
+		Console.WriteLine("Work:\n");
+		foreach (var chosenWork in result.Work) {
+
+			var work = this.Work[chosenWork.Index];
+			Console.WriteLine($"{work.JobTitle}, {work.Employer}\n");
+
+			foreach (var Bullet in chosenWork.Bullets) {
+				Console.WriteLine($"- {work.Bullets[Bullet]}\n");
+			}
+
+			Console.WriteLine();
+		}
+
+		Console.WriteLine("Projects:\n");
+		foreach (var chosenProject in result.Projects) {
+
+			var project = this.Projects[chosenProject.Index];
+			Console.WriteLine($"{project.Name}\n");
+
+			foreach (var Bullet in chosenProject.Bullets) {
+				Console.WriteLine($"- {project.Bullets[Bullet]}\n");
+			}
+			Console.WriteLine();
+		}
+
+		foreach (var ChosenProjects in Projects) {
+			foreach (var Bullet in ChosenProjects.Bullets) {
+			}
+		}
 	}
 }
 

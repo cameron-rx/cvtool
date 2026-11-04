@@ -14,7 +14,7 @@ using cvtool.User;
 
 string job = "Bar Manager at local pub";
 Profile user = Profile.ReadConfig("data/profile.yaml");
-Console.WriteLine(user.ChooseSections(job));
+user.ChooseSections(job);
 
 
 
