@@ -1,6 +1,4 @@
-﻿using YamlDotNet.Serialization;
-using YamlDotNet.Serialization.NamingConventions;
-using System.Text.Json;
+﻿using System.Text.Json;
 using OpenAI.Chat;
 using cvtool;
 using cvtool.DTO;
@@ -18,18 +16,6 @@ using cvtool.User;
 // ]
 
 // Serialise user education, work experience and projects to send to open ai
-Profile ReadUserProfile() {
-	using StreamReader reader = new("data/profile.yaml");
-
-	string text = reader.ReadToEnd();
-	var deserializer = new DeserializerBuilder()
-		.WithNamingConvention(UnderscoredNamingConvention.Instance)
-		.Build();
-
-	var profile = deserializer.Deserialize<Profile>(text);
-
-	return profile;
-}
 
 void RequestRelevantExperience(Profile user, string job) {
 	string jsonEducation = JsonSerializer.Serialize(user.Education);
@@ -78,7 +64,7 @@ void RequestRelevantExperience(Profile user, string job) {
 }
 
 
-Profile user = ReadUserProfile();
+Profile user = Profile.ReadConfig("data/profile.yaml");
 string job = "Bar Manager at local pub";
 RequestRelevantExperience(user, job);
 
