@@ -44,15 +44,15 @@ void RequestRelevantExperience(Profile user, string job) {
 		{
 			Summary: 'Short description of reasoning of choices'
 			Work: [
-			{ index: 0,
-			  bullets: [1,4,6]
+			{ Index: 0,
+			  Bullets: [1,4,6]
 			],
 			Projects: [
-			{ index: 0,
-			  bullets: [1]
+			{ Index: 0,
+			  Bullets: [1]
 			},
-			{ index: 0,
-			  bullets: [3,4]
+			{ Index: 0,
+			  Bullets: [3,4]
 			}]
 		}
 		
@@ -66,7 +66,6 @@ void RequestRelevantExperience(Profile user, string job) {
 	ChatClient client = new(model: "gpt-5.1", apiKey: Environment.GetEnvironmentVariable("OPENAI_API_KEY"));
 	ChatCompletion completion = client.CompleteChat(request);
 
-	Console.WriteLine($"Full Response: {completion.Content[0].Text}");
 
 	OpenAIDTO? jsonResponse = JsonSerializer.Deserialize<OpenAIDTO>(completion.Content[0].Text);
 

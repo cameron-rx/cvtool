@@ -25,7 +25,7 @@ public class OpenAIDTO {
 			ChosenProjectsString += "\n";
 		}
 
-		return $"Summary: {this.Summary} \nWork: {ChosenWorkString} \nProjects: {ChosenProjectsString}";
+		return $"Summary:\n{this.Summary}\n\nWork:\n{ChosenWorkString} \nProjects:\n{ChosenProjectsString}";
 	}
 }
 
