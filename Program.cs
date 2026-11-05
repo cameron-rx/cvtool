@@ -1,5 +1,6 @@
 ﻿using cvtool;
 using cvtool.User;
+using cvtool.PDFGeneration;
 
 // See https://aka.ms/new-console-template for more information
 
@@ -12,9 +13,9 @@ using cvtool.User;
 // 	},  
 // ]
 
+/*
 string job = "Bar Manager at local pub";
 Profile user = Profile.ReadConfig("data/profile.yaml");
 user.ChooseSections(job);
-
-
-
+*/
+CVDocument.Build();
